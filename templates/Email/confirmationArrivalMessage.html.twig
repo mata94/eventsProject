@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #4B5F43;
+            text-align: left;
+            height: 70px;
+            margin-top: 20px !important;
+        }
+        header img {
+            margin-left: 30px;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+        }
+        h2 {
+            margin-top: 50px;
+            font-weight: 500;
+            font-size: 48px;
+            line-height: 72px;
+        }
+
+        .event-card img {
+            width: 100%;
+            height: auto;
+        }
+        .event-card .event-details {
+            padding: 30px;
+            text-align: left;
+            background-color: #fff;
+        }
+        .event-card .event-details h3 {
+            font-size: 1.2rem;
+            margin: 0;
+            color: #333;
+            font-weight: 500;
+        }
+        .event-card a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .button-wrapper button {
+            width: 97%;
+            height: 40px;
+            background: #4B5F43;
+            border: 0px;
+            font-size: 14px;
+            color: #fefefe;
+            padding-left: 10px;
+        }
+
+        .button-wrapper button:hover {
+            cursor: pointer;
+        }
+
+        .input-wrapper input {
+            width: 89%;
+            height: 40px;
+            background-color: rgba(17, 17, 17, 0.1);
+            border: 0px;
+            font-size: 14px;
+            color: rgba(17, 17, 17, 0.7);
+            padding: 0px 15px;
+        }
+
+        .input-wrapper input:focus-visible {
+            outline: none;
+        }
+
+        .input-wrapper input::placeholder {
+            color: rgba(17, 17, 17, 0.7);
+        }
+
+        .dear-attendee {
+            text-align: left;
+            margin-top: 30px;
+            font-size: 14px;
+        }
+
+        .thank-you {
+            text-align: left;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .event-details-fix {
+            text-align: left;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .event-ul-wrapper {
+            text-align: left;
+        }
+
+        .event-ul-wrapper ul li {
+            margin-bottom: 10px;
+        }
+
+        .time-ul-wrapper ul li {
+            margin-bottom: 30px;
+        }
+
+        .mb-15 {
+            margin: 15px 0px !important;
+        }
+
+        .bring-qr {
+            text-align: left;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+
+
+        @media screen and (max-width: 768px) {
+            .input-wrapper input {
+                width: 87%;
+            }
+        }
+
+
+        @media screen and (max-width: 1024px) and (min-width: 769px) {
+            .input-wrapper input {
+                width: 88%;
+            }
+        }
+
+        @media screen and (max-width: 440px) {
+            .input-wrapper input {
+                width: 86%;
+            }
+        }
+
+        .bring-qr {
+            text-align: left;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+
+        .text-qrCode{
+            color: white;
+            margin-top: 15px;
+            background: #4B5F43;
+            text-align: center;
+            padding-top: 5px;
+            padding-bottom: 30px;
+        }
+        .text-qrCode h2{
+            padding-top: 3px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="{{ asset('images/logo.png') }}" alt="Logo" />
+        </header>
+    </div>
+    <div class="container">
+        <div class="dear-attendee">
+            Dear <strong>{{ slotUser.user.fullName }}</strong>,
+        </div>
+        <div class="thank-you">
+            Thank you for confirming your attendance at <strong>{{ slot.event.name }}</strong>! We're excited to have you join us.
+        </div>
+        <div class="event-details-fix">
+            <strong>Event Details:</strong>
+        </div>
+        <div class="event-ul-wrapper">
+            <ul>
+                <li>Date: <strong>{{ slot.timeStart|date('d.m.Y') }}</strong></li>
+                <li>
+                    Time:
+                    <ul>
+                        <li class="mb-15">Starts at: <strong>{{ slot.timeStart|date('H:i') }}</strong></li>
+                        <li class="mb-15">Ends at: <strong>{{ slot.timeEnd|date('H:i') }}</strong></li>
+                    </ul>
+                </li>
+                {% if slot.event.location %}
+                    <li>Location: <strong>{{ slot.event.location }}</strong></li>
+                {% endif %}
+            </ul>
+
+        </div>
+        <div class="bring-qr">
+            To make check-in smoother, please bring the <strong>QR code</strong> below to the event. It will serve as your <strong>confirmation</strong>.
+        </div>
+        <div class="text-qrCode">
+            <h2>Your <br> QR Code</h2>
+            <div class="qr-code">
+                <img src="{{ qrCodeCid }}" alt="QR kod">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

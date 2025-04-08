@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<title>Slot index</title>
+
+{% block body %}
+    <h1>Slot index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>TimeStart</th>
+                <th>TimeEnd</th>
+                <th>Seats</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for slot in slots %}
+            <tr>
+                <td>{{ slot.id }}</td>
+                <td>{{ slot.timeStart ? slot.timeStart|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ slot.timeEnd ? slot.timeEnd|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ slot.seats }}</td>
+                <td>
+                    <a href="{{ path('app_slot_show', {'id': slot.id}) }}">show</a>
+                    <a href="{{ path('app_slot_edit', {'id': slot.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_slot_new') }}">Create new</a>
+{% endblock %}

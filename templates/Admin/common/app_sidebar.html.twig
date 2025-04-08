@@ -1,0 +1,38 @@
+<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+
+    <div class="profile-sidebar">
+        <div class="profile-usertitle">
+            <div class="profile-usertitle-name">{{ app.user.email }}</div>
+            <p>{{ app.user.email|trans }}</p>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="divider"></div>
+
+    <ul class="nav menu">
+
+        {% if is_granted('ROLE_ADMIN') %}
+            <li class="{{ activeMenu.event }}">
+                <a href="{{ path('app_event_index') }}"><em class="far fa-building s-menu-icon"></em> {{ 'menu_events'|trans }}</a>
+            </li>
+        {% endif %}
+
+    </ul>
+
+    <div class="divider">
+        <hr>
+    </div>
+{#
+    <ul class="nav menu">
+        <li class="{{ activeMenu.profile }}">
+            <a href="{{ path('profile_show') }}"><em class="fas fa-user">&nbsp;</em>{{ 'menu_profile'|trans }}</a>
+        </li>
+    </ul>#}
+    <div class="divider">
+        <hr>
+    </div>
+
+    <ul class="nav menu">
+        <li><a href="{{ path('app_logout') }}"><em class="fa fa-power-off">&nbsp;</em>{{ 'menu_logout'|trans }}</a></li>
+    </ul>
+</div>

@@ -1,0 +1,65 @@
+{% extends 'Admin/common/app.html.twig' %}
+
+{% block title %}{{ 'title_events'|trans }}{% endblock %}
+
+{% block content %}
+
+    <div class="row" style="height: 20px"></div>
+
+    <div class="row">
+
+        <div class="col-lg-6">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">{{ 'title_events'|trans }}</div>
+                <div class="panel-body">
+
+                    <table class="table table-hover ">
+                        <thead>
+                        <tr>
+                            <th>{{ 'col_name'|trans }}</th>
+                            <th>{{ 'col_status'|trans }}</th>
+                            <th>{{ 'col_location'|trans }}</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody id="sTable">
+                        {% for event in events %}
+                            <tr>
+                                <td>{{ event.name }}</td>
+                                {% if event.status.isActive %}
+                                    <td><span class="badge-custom-valid">Active</span></td>
+                                {% else %}
+                                    <td><span class="badge-custom-expired">Inactive</span></td>
+                                {% endif %}
+
+                                {% if event.location %}
+                                    <td>{{ event.location }}</td>
+                                {% else %}
+                                    <td></td>
+                                {% endif %}
+
+                                <td class="text-right">
+                                    <a href="{{ path('app_event_show', {'id': event.id}) }}">
+                                        <button type="button" class="btn btn-sm btn-info">{{ 'general_open'|trans }}</button>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            {% include 'Admin/common/table_noresults.html.twig' %}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <a href="{{ path('app_event_new') }}">
+                        <button type="button" class="btn btn-info s-create-new-btn">{{ 'general_createNew'|trans }}</button>
+                    </a>
+
+                    <div class="navigation text-center">
+                        {{ knp_pagination_render(events) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

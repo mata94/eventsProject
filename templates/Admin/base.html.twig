@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}AluminijEvents{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href={{ asset("css/novi.css") }}>
+        <link rel="stylesheet" href={{ asset("css/cssForHtmlResponse.css") }}>
+        <link rel="stylesheet" href={{ asset("css/bootstrap.min.css") }}>
+        <link rel="stylesheet" href={{ asset("css/bootstrap-table.css") }}>
+        <link rel="stylesheet" href={{ asset("css/bootstrap-theme.css") }}>
+        <link rel="stylesheet" href={{ asset("css/styles.css") }}>
+        <link rel="stylesheet" href={{ asset("css/sorter_styles.css") }}>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.1.0/main.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@4.1.0/main.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@4.1.0/main.min.css">
+
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+    {% endblock %}
+</head>
+<body class="{% block bodyClass %}{% endblock %}">
+
+
+{% if app.user.fullName is defined and emailFlag is not defined %}
+    {% block header %}
+        {% include 'Admin/common/app_header.html.twig' %}
+    {% endblock %}
+    {% block sidebar %}
+        {% include 'Admin/common/app_sidebar.html.twig' %}
+    {% endblock %}
+{% endif %}
+
+{% block body %}{% endblock %}
+
+{% block javascripts %}
+    <script src={{ asset('js/jquery-1.11.1.min.js') }}></script>
+    <script src={{ asset('js/bootstrap.min.js') }}></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.1.0/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/interaction@4.1.0/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@4.1.0/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@4.1.0/main.min.js"></script>
+
+    <script src={{ asset('js/bootstrap-datepicker.js') }}></script>
+    <script src={{ asset('js/custom.js') }}></script>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#sTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
+{% endblock %}
+
+</body>
+</html>

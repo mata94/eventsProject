@@ -1,0 +1,64 @@
+{% extends 'Admin/common/app.html.twig' %}
+
+{% block title %}{{ 'title_slotUsers'|trans }}{% endblock %}
+
+{% block content %}
+
+    <div class="row" style="height: 20px"></div>
+
+    <div class="row">
+
+        <div class="col-lg-12">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">{{ 'title_slotUsers'|trans }}</div>
+                <div class="panel-body">
+
+                    <table class="table table-hover ">
+                        <thead>
+                        <tr>
+                            <th>{{ 'col_email'|trans }}</th>
+                            <th>{{ 'col_fullName'|trans }}</th>
+                            <th>{{ 'col_signedAt'|trans }}</th>
+                            <th>{{ 'col_scanTime'|trans }}</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody id="sTable">
+                        {% for slotUser in slotUsers %}
+                            <tr>
+                                <td>{{ slotUser.user.email }}</td>
+                                {% if slotUser.user.fullName %}
+                                    <td>{{ slotUser.user.fullName }}</td>
+                                {% else %}
+                                    <td></td>
+                                {% endif %}
+                                <td>{{ slotUser.createdAt|date("d.m.Y H:i") }}</td>
+                                {% if slotUser.scanTime %}
+                                    <td>{{ slotUser.scanTime|date("d.m.Y H:i") }}</td>
+                                {% else %}
+                                    <td></td>
+                                {% endif %}
+                                <td class="text-right">
+                                    <a href="{{ path('app_slot_user_delete', {'id': slotUser.id}) }}">
+                                        <button type="button" class="btn btn-sm btn-info">{{ 'general_delete'|trans }}</button>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% else %}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <a href="{{ path('app_slot_user_new', { "slotId": slot.id }) }}">
+                        <button type="button" class="btn btn-info s-create-new-btn">{{ 'general_AddNew'|trans }}</button>
+                    </a>
+
+                    <div class="navigation text-center">
+                        {{ knp_pagination_render(slotUsers) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

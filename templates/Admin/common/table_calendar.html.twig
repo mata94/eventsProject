@@ -1,0 +1,23 @@
+
+<div class="row">
+    <div class="col-lg-12 table-actions " style="padding: 10px 20px;">
+
+        {% set calendarButton = "primary" %}
+        {% set tableButton    = "primary" %}
+
+        {% if table is defined %}
+            {% set tableButton = "info" %}
+        {% endif %}
+
+        {% if calendar is defined %}
+            {% set calendarButton = "info" %}
+        {% endif %}
+
+        <a href="{{ path('admin_lesson_calendar') }}">
+            <button type="button" class="btn btn-{{calendarButton}} s-create-new-btn">Calendar</button>
+        </a>
+        <a href="{{ path('admin_lesson_index') }}">
+            <button type="button" class="btn btn-{{ tableButton }} s-create-new-btn">Table</button>
+        </a>
+    </div>
+</div>

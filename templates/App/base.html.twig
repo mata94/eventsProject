@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Aluminij{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href={{ asset("css/aluminij.css") }}>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+
+    {% endblock %}
+</head>
+<body class="{% block bodyClass %}{% endblock %}">
+
+    {% block header %}
+        {% include 'App/common/app_header.html.twig' %}
+    {% endblock %}
+
+
+{% block body %}{% endblock %}
+</body>
+</html>

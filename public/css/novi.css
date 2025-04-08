@@ -1,0 +1,106 @@
+.badge-custom-valid {
+    background-color: #28a745 !important;
+    color: white;
+    padding: 0.25em 0.4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    border-radius: 0.2rem;
+}
+
+.badge-custom-expired {
+    background-color: #dc3545 !important;
+    color: white;
+    padding: 0.25em 0.4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    border-radius: 0.2rem;
+}
+
+.badge-custom-used {
+    background-color: #ffc107 !important;
+    color: white;
+    padding: 0.25em 0.4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    border-radius: 0.2rem;
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding-left: 0;
+    list-style: none;
+    border-radius: 0.25rem;
+}
+
+.pagination li {
+    display: inline;
+    margin: 0 5px;
+}
+
+.pagination li a {
+    position: relative;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #007bff;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    text-decoration: none;
+}
+
+.pagination li a:hover {
+    color: #007bff;
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+}
+
+.pagination li.active a {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.pagination li.disabled a {
+    color: #6c757d;
+    pointer-events: none;
+    background-color: #fff;
+    border-color: #dee2e6;
+}
+
+.custom-card {
+    background-color: rgb(30, 33, 34) !important;
+    padding: 100px;
+    border-radius: 15px;
+}
+.custom-title {
+    color: yellow !important;
+    font-size: 36px;
+    font-weight: bold;
+}
+.custom-text {
+    color: white;
+    font-size: 18px;
+}
+.custom-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none !important;
+}
+.custom-btn:hover {
+    text-decoration: none !important;
+    background-color: #0056b3;
+}
+.custom-btn:focus, .custom-btn:active {
+    text-decoration: none !important;
+}
+
+.createdTh{
+    text-align: center !important;
+}
+

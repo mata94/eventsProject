@@ -1,0 +1,48 @@
+{% extends 'Admin/base.html.twig' %}
+
+{% block title %}{{ 'register.title'|trans }}{% endblock %}
+{% block bodyClass %}register-page{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href={{ asset("css/test.css") }}>
+    <link rel="stylesheet" href={{ asset("css/login.css") }}>
+{% endblock %}
+{% block body %}
+    <div class="register-box">
+        <div class="card">
+            <div class="card-body register-card-body">
+                <h2 class="fw-bold mb-2">{{ 'register.heading'|trans }}</h2>
+                <p class="mb-5">{{ 'register.prompt'|trans }}</p>
+                {% if error %}
+                    <div class="alert alert-danger">{{ error }}</div>
+                {% endif %}
+
+                {{ form_start(form) }}
+                {{ form_label(form.email) }}
+                <div class="input-group mb-3">
+                    {{ form_widget(form.email) }}
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-envelope"></span>
+                        </div>
+                    </div>
+                </div>
+                {{ form_label(form.password) }}
+                <div class="input-group mb-3">
+                    {{ form_widget(form.password) }}
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row align-items-center">
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-primary btn-block">{{ 'register.button'|trans }}</button>
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

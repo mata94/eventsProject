@@ -1,0 +1,49 @@
+{% extends 'App/common/app.html.twig' %}
+
+{% block title %}{{ 'title_slot'|trans }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <a class="go-back-button" href="{{ path('getEvents') }}">&lt; Go Back</a>
+        <h2>{{ event.name }}</h2>
+        <p class="choose-time-slot-title">CHOOSE A TIME SLOT AVAILABLE</p>
+        <div class="times-grid">
+            {% for slot in slots %}
+                {% if slot.isAvailable %}
+                    <a class="time-slot-link" href="{{ path('confirmSlotArrival', { 'slotId': slot.id }) }}">
+                        <div class="time-slot">
+                            {% if slot.isFinished %}
+                                <p class="{{ slot.getSlotHtmlClassForTime }}">{{ slot.getSlotTimePeriod() }}</p>
+                                <p class="{{ slot.getSlotHtmlClassForStatus }}">{{ slot.getSlotStatusName() | upper }}</p>
+                            {% else %}
+                                <p class="{{ slot.getSlotHtmlClassForTime }}">{{ slot.getSlotTimePeriod() }}</p>
+                                <div class="availability">
+                                    <span class="{{ slot.getSlotHtmlClassForStatus }}">{{ slot.getSlotStatusName() | upper }}</span>
+                                    <span class="capacity-black">SEATS: {{ slot.getSeatsStats }}</span>
+                                </div>
+                            {% endif %}
+
+                        </div>
+                    </a>
+                {% else %}
+                    <div class="time-slot-link">
+                        <div class="time-slot">
+                            {% if slot.isFinished %}
+                                <p class="{{ slot.getSlotHtmlClassForTime }}">{{ slot.getSlotTimePeriod() }}</p>
+                                <p class="{{ slot.getSlotHtmlClassForStatus }}">{{ slot.getSlotStatusName() | upper }}</p>
+                            {% else %}
+                                <p class="{{ slot.getSlotHtmlClassForTime }}">{{ slot.getSlotTimePeriod() }}</p>
+                                <div class="availability">
+                                    <span class="{{ slot.getSlotHtmlClassForStatus }}">{{ slot.getSlotStatusName() | upper }}</span>
+                                    <span class="capacity-black">SEATS: {{ slot.getSeatsStats }}</span>
+                                </div>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                {% endif %}
+
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

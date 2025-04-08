@@ -1,0 +1,37 @@
+{% extends 'App/common/app.html.twig' %}
+
+{% block title %}{{ 'title_confirmArrival'|trans }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <a class="go-back-button" href="{{ path('allEventSlots', { 'eventId': event.id }) }}">&lt; Go Back</a>
+        <h2>Confirm Arrival</h2>
+        <p class="choose-time-slot-title">ENTER YOUR INFORMATION BELOW</p>
+
+        {{ form_start(form) }}
+        <div class="form-div">
+            {% if error %}
+                <div class="alert-custom">{{ error }}</div>
+            {% endif %}
+
+            {% if success %}
+                <div class="alert-custom-success">{{ success }}</div>
+            {% endif %}
+
+            <div class="input-wrapper">
+                {{ form_widget(form.fullName, {
+                    'attr': {'placeholder': 'Full Name'}
+                }) }}
+            </div>
+                <div class="input-wrapper">
+                    {{ form_widget(form.email, {
+                        'attr': {'placeholder': 'E-mail'}
+                    }) }}
+                </div>
+                <div class="button-wrapper">
+                    <button class="form-btn">Confirm</button>
+                </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

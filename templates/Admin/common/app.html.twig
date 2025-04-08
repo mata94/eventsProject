@@ -1,0 +1,14 @@
+{% extends 'Admin/base.html.twig' %}
+
+{% block body %}
+
+    {% include 'Admin/common/app_header.html.twig' %}
+    {% include 'Admin/common/app_sidebar.html.twig' %}
+
+    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+
+        {% block content %}{% endblock %}
+
+    </div>
+
+{% endblock %}

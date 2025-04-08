@@ -1,0 +1,94 @@
+{% extends 'Admin/common/app.html.twig' %}
+
+{% block title %}{{ 'filter_event'|trans }}{% endblock %}
+
+{% block content %}
+    <div class="panel-heading">{{ 'filter_event'|trans }}</div>
+
+    <div class="row">
+
+        <div class="col-lg-6">
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th>{{ 'col_name'|trans }}</th>
+                    <td>{{ event.name }}</td>
+                </tr>
+
+                <tr>
+                    <th>{{ 'col_status'|trans }}</th>
+                    {% if event.name == "Inactive" %}
+                        <td><span class="badge-custom-expired">Inactive</span></td>
+                    {% else %}
+                        <td><span class="badge-custom-valid">Active</span></td>
+                    {% endif %}
+                </tr>
+
+                <tr>
+                    <th>{{ 'col_image'|trans }}</th>
+                    {% if event.imagePath  %}
+                        <td><img src="{{ asset('images/' ~ event.getImagePath) }}" alt="User Photo"></td>
+                    {% else %}
+                        <td></td>
+                    {% endif %}
+                </tr>
+
+                </tbody>
+            </table>
+            <div class="col-lg-12" style="margin:15px 0;">
+                <a href="{{ path('app_event_edit', {'id': event.id}) }}">
+                    <button type="button" class="btn btn-info">{{ 'general_edit'|trans }}</button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12" style="margin:15px 0;">
+            <div class="panel panel-default">
+
+                <div class="panel-heading">{{ 'title_slots'|trans }}</div>
+
+                <table class="table table-hover ">
+                    <tbody>
+                    <tr>
+                        <th>{{ 'col_timeStart'|trans }}</th>
+                        <th>{{ 'col_timeEnd'|trans }}</th>
+                        <th>{{ 'col_status'|trans }}</th>
+                        <th>{{ 'col_seats'|trans }}</th>
+                        <th></th>
+                    </tr>
+                    </tbody>
+                    <tbody id="sTable">
+                    {% for slot in slots %}
+                        <tr onclick="window.location='{{ path('app_slot_users_show', {'slotId': slot.id}) }}';">
+                            <td>
+                                {{ slot.timeStart|date("d.m.Y H:i")}}
+                            </td>
+                            <td>{{ slot.timeEnd|date("d.m.Y H:i")}}</td>
+                            <td><span class={{ slot.getSlotAdminStatus}} >{{  slot.getSlotStatusName() }}</span></td>
+                            <td>{{ slot.getSeatsStats() }}</td>
+
+                            <td class="text-right">
+                                <a href="{{ path('app_slot_edit', {'id': slot.id}) }}">
+                                    <button type="button" class="btn btn-sm btn-info">{{ 'general_edit'|trans }}</button>
+                                </a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        {% include 'Admin/common/table_noresults.html.twig' %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div class="col-lg-12" style="margin:15px 0;">
+                    <a href="{{ path('app_slot_new',{"eventId": event.id}) }}">
+                        <button type="button" class="btn btn-info">{{ 'general_createNew'|trans }}</button>
+                    </a>
+                </div>
+                <div class="navigation text-center">
+                    {{ knp_pagination_render(slots) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,24 @@
+
+<div class="row">
+    <div class="col-lg-12 table-actions " style="padding: 10px 20px;">
+
+        <a href="{% if app.request.attributes.get('id') is not null %}
+                    {{ path(app.request.attributes.get('_route'), { 'id': app.request.attributes.get('id') }) }}
+                 {% else %}
+                    {{ path(app.request.attributes.get('_route')) }}
+                 {% endif %}"
+           class="color-red">
+            {{ 'general_remove_filters'|trans }} <i class="far fa-times-circle"></i>
+        </a>
+        <a href="{{ app.request.uri }}" class="color-teal"> {{ 'general_refresh'|trans }} <i class="fas fa-sync-alt"></i></a>
+        {% if app.request.query|length > 0 %}
+            <a href="{{ app.request.uri ~ '&' ~ 'download=xls' }}">
+                {{ 'general_download'|trans }} <i class="fas fa-download"></i>
+            </a>
+        {% else %}
+            <a href="{{ app.request.uri ~ '?' ~ 'download=xls' }}">
+                {{ 'general_download'|trans }} <i class="fas fa-download"></i>
+            </a>
+        {% endif %}
+    </div>
+</div>

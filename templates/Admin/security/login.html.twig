@@ -1,0 +1,59 @@
+{% extends 'Admin/base.html.twig' %}
+
+{% block title %}{{ 'login.title'|trans }}{% endblock %}
+{% block bodyClass %}login-page{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href={{ asset("css/test.css") }}>
+    <link rel="stylesheet" href={{ asset("css/login.css") }}>
+{% endblock %}
+{% block body %}
+
+    <div class="login-box">
+
+        <div class="card">
+            <div class="card-body login-card-body">
+                <h2 class="fw-bold mb-2">{{ 'login.heading'|trans }}</h2>
+                <p class="mb-5">{{ 'login.prompt'|trans }}</p>
+
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+                <form action="#" method="post">
+                    <div class="input-group mb-3">
+                        <input type="email" value="{{ last_username }}" name="_username" class="form-control" placeholder="{{ 'login.email_placeholder'|trans }}">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="password" name="_password" class="form-control" placeholder="{{ 'login.password_placeholder'|trans }}">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                    <div class="row align-items-center">
+                        <div class="col-8">
+                            <div class="icheck-primary d-flex align-items-center">
+                                <input type="checkbox" id="remember">
+                                <label for="remember" class="small-text ml-2 mb-0">
+                                    {{ 'login.remember_me'|trans }}
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-primary btn-block">{{ 'login.button'|trans }}</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

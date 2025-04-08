@@ -1,0 +1,74 @@
+.login-logo,
+.register-logo {
+    margin-bottom: .9rem;
+    font-size: 10px;
+    font-weight: 10;
+    text-align: center;
+}
+
+.fw-bold {
+    font-size: 30px !important;
+}
+
+.login-page,
+.register-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.login-box,
+.register-box {
+    width: 400px;
+    height: auto;
+}
+
+.card {
+    margin-bottom: 0;
+}
+
+.login-card-body,
+.register-card-body {
+    padding: 30px;
+    border-top: 0;
+    font-size: 1rem;
+}
+
+.input-group .form-control {
+    font-size: 10px;
+}
+
+.input-group .form-control:focus {
+    box-shadow: none;
+}
+
+.input-group .input-group-text {
+    font-size: 10px;
+}
+
+.login-box-msg,
+.register-box-msg {
+    padding: 0 20px 20px;
+    margin: 0;
+    text-align: center;
+}
+
+.social-auth-links {
+    margin: 10px 0;
+}
+
+.icheck-primary .small-text {
+    margin-left: 5px;
+    margin-bottom: 0;
+}
+
+.small-text {
+    margin-top: 5px;
+}
+
+.mb-5 {
+    font-size: 15px;
+}
+

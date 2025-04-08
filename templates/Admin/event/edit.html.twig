@@ -1,0 +1,25 @@
+{% extends 'Admin/common/app.html.twig' %}
+
+{% block title %}{{ 'title_editEvent'|trans }}{% endblock %}
+
+{% block content %}
+
+    <div class="row" style="height: 20px"></div>
+
+    <div class="row">
+
+        <div class="col-lg-6">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">{{ 'title_editEvent'|trans }}</div>
+                <div class="panel-body">
+
+                    {{ include('Admin/event/_form.html.twig') }}
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    {{ include('Admin/event/_delete_form.html.twig') }}
+{% endblock %}

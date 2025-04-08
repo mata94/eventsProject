@@ -1,0 +1,316 @@
+<div class="panel panel-container" style="padding: 10px">
+
+    <div class="row">
+
+        {% set size = 3 %}
+
+        {% if filterSize is defined %}
+            {% set size = filterSize %}
+        {% endif %}
+
+        {% if filters.startDate is defined %}
+            <div class="col-xs-6 col-md-{{ size}} col-lg-{{ size }}">
+                <div class="form-group">
+                    <label>{{ 'filter_startDate'|trans }}</label>
+                    <input class="form-control s-filter-form s-filter-text-input" data-provide="datepicker" placeholder="-- {{ 'filter_startDate_def_item'|trans }} --" name="startDate">
+                </div>
+            </div>
+        {% endif %}
+
+        {% if filters.endDate is defined %}
+            <div class="col-xs-6 col-md-{{ size }} col-lg-{{ size }}">
+                <div class="form-group">
+                    <label>{{ 'filter_endDate'|trans }}</label>
+                    <input class="form-control s-filter-form s-filter-text-input" data-provide="datepicker" placeholder="-- {{ 'filter_endDate_def_item'|trans }} --" name="endDate">
+                </div>
+            </div>
+        {% endif %}
+
+        {% if filters.days is defined %}
+            <div class="col-xs-6 col-md-{{ size }} col-lg-{{ size }}">
+                <div class="form-group">
+                    <label>{{ 'filter_day'|trans }}</label>
+                    <select class="form-control s-filter-form" name="day">
+                        <option value="" selected class="default_item_dropdown">-- {{ 'filter_day_def_item'|trans }} --</option>
+                        {% for key, value in filters.days %}
+                            <option value="{{ key }}">{{ value }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if filters.statuses is defined %}
+            <div class="col-xs-6 col-md-{{ size }} col-lg-{{ size }}">
+                <div class="form-group">
+                    <label>{{ 'filter_status'|trans }}</label>
+                    <select class="form-control s-filter-form" name="status">
+                        <option value="" selected class="default_item_dropdown">-- {{ 'filter_status_def_item'|trans }} --</option>
+                        {% for single in filters.statuses %}
+                            <option value="{{ single.id }}">{{ single.name|trans }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if filters.zone is defined %}
+            <div class="col-xs-6 col-md-{{ size }} col-lg-{{ size }}">
+                <div class="form-group">
+                    <label>{{ 'filter_zone'|trans }}</label>
+                    <select class="form-control s-filter-form" name="zona">
+                        <option value="" selected class="default_item_dropdown">-- {{ 'filter_zone_def_item'|trans }} --</option>
+                        {% for single in filters.zone %}
+                            <option value="{{ single.id }}">{{ single.name|trans }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if filters.ticketType is defined %}
+            <div class="col-xs-6 col-md-{{ size }} col-lg-{{ size }}">
+                <div class="form-group">
+                    <label>{{ 'filter_ticket_type'|trans }}</label>
+                    <select class="form-control s-filter-form" name="ticketType">
+                        <option value="" selected class="default_item_dropdown">-- {{ 'filter_ticket_type_def_item'|trans }} --</option>
+                        {% for single in filters.ticketType %}
+                            <option value="{{ single.id }}">{{ single.name|trans }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if filters.purchasedType is defined %}
+            <div class="col-xs-6 col-md-{{ size }} col-lg-{{ size }}">
+                <div class="form-group">
+                    <label>{{ 'filter_purchased_type'|trans }}</label>
+                    <select class="form-control s-filter-form" name="purchasedType">
+                        <option value="" selected class="default_item_dropdown">-- {{ 'filter_purchased_type_def_item'|trans }} --</option>
+                        {% for single in filters.purchasedType %}
+                            <option value="{{ single.id }}">{{ single.name|trans }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if filters.paymentStatus is defined %}
+            <div class="col-xs-6 col-md-{{ size }} col-lg-{{ size }}">
+                <div class="form-group">
+                    <label>{{ 'filter_payment_status'|trans }}</label>
+                    <select class="form-control s-filter-form" name="paymentStatus">
+                        <option value="" selected class="default_item_dropdown">-- {{ 'filter_payment_status_def_item'|trans }} --</option>
+                        {% for single in filters.paymentStatus %}
+                            <option value="{{ single.id }}">{{ single.name|trans }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if filters.direction is defined %}
+            <div class="col-xs-6 col-md-{{ size }} col-lg-{{ size }}">
+                <div class="form-group">
+                    <label>{{ 'filter_direction'|trans }}</label>
+                    <select class="form-control s-filter-form" name="direction">
+                        <option value="" selected class="default_item_dropdown">-- {{ 'filter_direction'|trans }} --</option>
+                        {% for single in filters.direction %}
+                            <option value="{{ single.id }}">{{ single.name|trans }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if filters.races is defined %}
+            <div class="col-xs-6 col-md-{{ size }} col-lg-{{ size }}">
+                <div class="form-group">
+                    <label>{{ 'filter_race'|trans }}</label>
+                    <select class="form-control s-filter-form" name="race">
+                        <option value="" selected class="default_item_dropdown">-- {{ 'filter_race_def_item'|trans }} --</option>
+                        {% for single in filters.races %}
+                            <option value="{{ single.id }}">{{ single.name|trans }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if filters.products is defined %}
+            <div class="col-xs-6 col-md-{{ size }} col-lg-{{ size }}">
+                <div class="form-group">
+                    <label>Proizvod</label>
+                    <select class="form-control s-filter-form" name="product">
+                        <option value="" selected class="default_item_dropdown">-- Odaberi proizvod --</option>
+                        {% for single in filters.products %}
+                            <option value="{{ single.id }}">{{ single.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if filters.months is defined %}
+            <div class="col-xs-6 col-md-{{ size }} col-lg-{{ size }}">
+                <div class="form-group">
+                    <label>Mjesec</label>
+                    <select class="form-control s-filter-form" name="month">
+                        <option value="" selected class="default_item_dropdown">-- Odaberi mjesec --</option>
+                        {% for key, value in filters.months %}
+                            <option value="{{ value }}">{{ key }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if filters.years is defined %}
+            <div class="col-xs-6 col-md-{{ size }} col-lg-{{ size }}">
+                <div class="form-group">
+                    <label>Godina</label>
+                    <select class="form-control s-filter-form" name="year">
+                        <option value="" selected class="default_item_dropdown">-- Odaberi godinu --</option>
+                        {% for key, value in filters.years %}
+                            <option value="{{ value }}">{{ key }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if filters.statusArr is defined %}
+            <div class="col-xs-6 col-md-{{ size }} col-lg-{{ size }}">
+                <div class="form-group">
+                    <label>Status</label>
+                    <select class="form-control s-filter-form" name="status">
+                        <option value="" selected class="default_item_dropdown">-- Odaberi status --</option>
+                        {% for key, value in filters.statusArr %}
+                            <option value="{{ value }}">{{ key }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if filters.types is defined %}
+            <div class="col-xs-6 col-md-{{ size }} col-lg-{{ size }}">
+                <div class="form-group">
+                    <label>{{ 'filter_type'|trans }}</label>
+                    <select class="form-control s-filter-form" name="type">
+                        <option value="" selected class="default_item_dropdown">-- {{ 'filter_type_def_item'|trans }} --</option>
+                        {% for single in filters.types %}
+                            <option value="{{ single.id }}">{{ single.name|trans }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if filters.clubs is defined %}
+            <div class="col-xs-6 col-md-{{ size }} col-lg-{{ size }}">
+                <div class="form-group">
+                    <label>{{ 'filter_club'|trans }}</label>
+                    <select class="form-control s-filter-form" name="club">
+                        <option value="" selected class="default_item_dropdown">-- {{ 'filter_club_def_item'|trans }} --</option>
+                        {% for single in filters.clubs %}
+                            <option value="{{ single.id }}">{{ single.name|trans }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if filters.countries is defined %}
+            <div class="col-xs-6 col-md-{{ size }} col-lg-{{ size }}">
+                <div class="form-group">
+                    <label>{{ 'filter_country'|trans }}</label>
+                    <select class="form-control s-filter-form" name="country">
+                        <option value="" selected class="default_item_dropdown">-- {{ 'filter_country_def_item'|trans }} --</option>
+                        {% for single in filters.countries %}
+                            <option value="{{ single.id }}">{{ single.name|trans }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if filters.startZones is defined %}
+            <div class="col-xs-6 col-md-{{ size }} col-lg-{{ size }}">
+                <div class="form-group">
+                    <label>{{ 'filter_startZones'|trans }}</label>
+                    <select class="form-control s-filter-form" name="startZone">
+                        <option value="" selected class="default_item_dropdown">-- {{ 'filter_startZones_def_item'|trans }} --</option>
+                        {% for single in filters.startZones %}
+                            <option value="{{ single.id }}">{{ single.name|trans }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if filters.typesArr is defined %}
+            <div class="col-xs-6 col-md-{{ size }} col-lg-{{ size }}">
+                <div class="form-group">
+                    <label>Tip</label>
+                    <select class="form-control s-filter-form" name="type">
+                        <option value="" selected class="default_item_dropdown">-- {{ 'filter_type_def_item'|trans}} --</option>
+                        {% for key, value in filters.typesArr %}
+                            <option value="{{ value }}">{{ key }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if filters.sex is defined %}
+            <div class="col-xs-6 col-md-{{ size }} col-lg-{{ size }}">
+                <div class="form-group">
+                    <label>{{ 'filter_sex'|trans }}</label>
+                    <select class="form-control s-filter-form" name="sex">
+                        <option value="" selected class="default_item_dropdown">-- {{ 'filter_sex_def_item'|trans}} --</option>
+                        {% for key, value in filters.sex %}
+                            <option value="{{ value }}">{{ key|trans }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if filters.totalMarathons is defined %}
+            <div class="col-xs-6 col-md-{{ size }} col-lg-{{ size }}">
+                <div class="form-group">
+                    <label>{{ 'filter_totalMarathons'|trans }}</label>
+                    <select class="form-control s-filter-form" name="totalMarathons">
+                        <option value="" selected class="default_item_dropdown">-- {{ 'filter_totalMarathons_def_item'|trans}} --</option>
+                        {% for value in filters.totalMarathons %}
+                            <option value="{{ value }}">{{ value }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if filters.package is defined %}
+            <div class="col-xs-6 col-md-{{ size }} col-lg-{{ size }}">
+                <div class="form-group">
+                    <label>Package</label>
+                    <select class="form-control s-filter-form" name="package">
+                        <option value="" selected class="default_item_dropdown">-- Choose option --</option>
+                            <option value="1">Not received</option>
+                            <option value="2">Received</option>
+                    </select>
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="col-xs-6 col-md-{{ size }} col-lg-{{ size }}">
+            <div class="form-group">
+                <label>{{ 'general_search'|trans }}</label>
+                <input type="text" class="form-control s-filter-form s-filter-text-input" name="search" placeholder="-- {{ 'general_search'|trans }} --">
+            </div>
+        </div>
+
+    </div><!--/.row-->
+</div>

@@ -1,0 +1,20 @@
+.table_basic th{
+    text-align: center;
+}
+
+.table-actions{
+    padding: 10px;text-align: right;
+}
+
+.table-actions a {
+    padding-left: 10px;
+}
+
+h1.page-header {
+    margin: 10px 0;
+}
+
+.default_item_dropdown{
+    font-weight: 100;
+    font-style: italic;
+}
